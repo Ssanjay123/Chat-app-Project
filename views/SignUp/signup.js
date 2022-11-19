@@ -8,14 +8,19 @@ const signupobj = {
     email:form.get("email"),
     password:form.get("password")
 }
-console.log(signupobj);
-const response = await axios.post("http://localhost:3000/user/signup",signupobj)
 
-console.log(response);
-alert(response.data.msg);
-window.location.href="./login.html"
+const response = await axios.post("http://localhost:3000/user/signup",signupobj)
+if(response.status===200){
+    console.log(response);
+    alert(response.data.message)
 }
+else{
+alert(response.data.msg);
+window.location.href="../Login/login.html"
+}
+    }
 catch(err){
     console.log(err)
 }
 }
+
