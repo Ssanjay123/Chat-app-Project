@@ -8,7 +8,14 @@ const Chat = sequelize.define("chats",{
         autoIncrement:true,
         primaryKey:true,
     },
-    chats:Sequelize.STRING
+    name:{
+        type:Sequelize.STRING,
+        allowedNull:true
+    },
+    message:{
+    type:Sequelize.STRING,
+    allownull:false
+    }
 })
 
 module.exports = Chat;

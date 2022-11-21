@@ -6,7 +6,7 @@ exports.signUp = async(req,res)=>{
     try{
     const{name,email,password} = req.body;
  const user = await User.findAll({where:{email:email}})
-  if(user){
+  if(user[0]){
     res.status(200).json({message:"User Already Exists"})
   }
   else{
