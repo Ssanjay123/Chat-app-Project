@@ -1,0 +1,25 @@
+body{
+    background-image: url(https://static.vecteezy.com/system/resources/previews/002/218/678/original/blue-wallpaper-with-modern-smartphones-social-media-message-background-copy-space-for-a-text-vector.jpg);
+    background-size: cover;
+}
+
+h1{
+   color:#FFD1D1;
+   text-align: center;
+}
+
+form{
+   text-align: center;
+}
+
+input{
+   background:none ;
+   width: 150px;
+   height: 20px;
+}
+
+#group-message{
+  color: antiquewhite;
+  margin: 30px 150px;
+  border: 5px solid pink;
+}
