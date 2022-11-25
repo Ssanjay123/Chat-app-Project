@@ -11,7 +11,7 @@ exports.createGroup = (req,res)=>{
      .then(group =>{
        const groupId = group.id;
        userGroup.create({groupId : 
-        groupId, userId : req.user.id})
+        groupId, userId : req.user.id,isAdmin:true})
        .then(userGroup =>{
         res.status(201).json({message:"created"})
        })
@@ -73,10 +73,10 @@ exports.createGroup = (req,res)=>{
     const groupid = req.params.id;
     User.findOne({where :{name:name}})
     .then(user =>{
-      console.log(user.id,"userid muzammil hhxjkshaikh ")
+     
       userGroup.create({userId:user.id,groupId:groupid})
       .then(result=>{
-        res.status(201).json({message:"created"})
+        res.status(201).json({data:[result],message:"created"})
       })
     })
     .catch(err=>{
@@ -101,8 +101,8 @@ exports.createGroup = (req,res)=>{
   }
   
   exports.deleteUser = (req,res)=>{
-    const groupid = req.params.id;
-    const userId = req.body.id;
+    const groupid = req.query.groupId;
+    const userId = req.query.userId;
     userGroup.destroy({where:{groupId:groupid , userId:userId}})
     .then(result =>{
       res.status(200).json({message:"deleted"})

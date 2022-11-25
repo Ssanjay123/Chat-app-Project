@@ -7,6 +7,7 @@ exports.addchats = async(req,res)=>{
    const result =  await Chat.create({name:req.user.name,
     message:msg,
     userId:req.user.id,
+    groupId:null
      })
     res.status(201).json({newMsg:result,success:true});
 }
@@ -17,7 +18,7 @@ catch(err){
 
 exports.getChats = async(req,res)=>{
     try{
-     const response =  await Chat.findAll();
+     const response =  await Chat.findAll({where:{groupId:null}});
      res.status(200).json({allMsgs:response});
     }
     catch(err){

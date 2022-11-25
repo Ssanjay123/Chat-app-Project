@@ -87,46 +87,67 @@ function showMessages(groupid)
 
 function AddUserbtn(groupid)
 {
-
     const data = document.getElementById('addUser');
     data.innerHTML = `<div><form>
     <input type="text" name="chats" id="userId"  required/>
     <button  id="text" onclick="AddUser(${groupid},event)">ADD USER</button>
    </form>  </div>`
    showAddUser(groupid)
+    
 }
 
 
-function AddUser(groupid,e)
+async function AddUser(groupid,e)
 {
-    e.preventDefault()
-    const user = document.getElementById('userId').value
-    axios.post(`http://localhost:3000/group/AddUser/${groupid}`,{user:user})
-    .then(result =>{
+    try{
+    e.preventDefault();
+    let users = document.getElementById('showAddUser')
+    const user1 = document.getElementById('userId').value
+   const result = await axios.post(`http://localhost:3000/group/AddUser/${groupid}`,{user:user1})
+   
         console.log(result)
-    })
-    .catch(err =>{
-        console.log(err)
-    })
+        let userarr = result.data.data;
+  
+        userarr.forEach(user=>{
+         users.innerHTML += `<li id=${user.userId}>${user1}  <button id="${user.userId}" onclick="removeUserFromGroup(${user.userId},${user.groupId})">Remove User</button></li>`
+        })
+     }
+     catch(err){
+        console.log(err);
+     }
 }
 
-function showAddUser(groupid)
-{
-    axios.get(`http://localhost:3000/group/getUser/${groupid}`)
-    .then(result =>{
-        console.log(result)
-        // const parentNode = document.getElementById('showAddUser')
-        // let createdGroup="";
-        // for(let i=0;i<result.data.data.length;i++)
-        // {
-        //     const name = result.data.data[i].user.name;
-        //     const message = result.data.data[i].message;
-        //     createdGroup += `<div>-${name}-${message}---</div>`
 
-        // }
-        // parentNode.innerHTML= createdGroup;
-    })
-    .catch(err =>{
+async function showAddUser(groupid){
+    try{
+    let users = document.getElementById('showAddUser')
+   let result = await axios.get(`http://localhost:3000/group/getUser/${groupid}`)
+    
+   let userarr = result.data.data;
+   
+   userarr.forEach(user=>{
+    users.innerHTML += `<li id=${user.user.id}>${user.user.name}  <button id="${user.user.id}" onclick="removeUserFromGroup(${user.user.id},${user.groupId})">Remove User</button></li>`
+   })
+       
+        console.log(result)
+    }
+    catch(err){
         console.log(err)
-    })
+    }
+    
+}
+
+async function removeUserFromGroup(userId,groupId){
+    try{
+        
+   const result = await axios.delete(`http://localhost:3000/group/deleteUser?groupId=${groupId}&userId=${userId}`)
+   console.log(result);
+   const parentNode = document.getElementById("showAddUser");
+   const childToBeRemoved = document.getElementById(`${userId}`);
+
+   parentNode.removeChild(childToBeRemoved);
+}
+catch(err){
+    console.log(err);
+}
 }

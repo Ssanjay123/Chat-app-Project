@@ -17,7 +17,7 @@ router.post('/AddUser/:id',groupController.addUser)
 
 router.get('/getUser/:id',groupController.getUser)
 
-router.delete('/deleteUser/:id',groupController.deleteUser)
+router.delete('/deleteUser',groupController.deleteUser)
 
 
 module.exports = router;
