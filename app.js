@@ -3,10 +3,12 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors")
 const sequelize = require("./util/database")
+// const mongoose = require("./util/database")
 
-const userRoutes = require("./routes/user");
+const userRoutes = require("./routes/user")
 const chatRoutes = require("./routes/chat")
 const groupRoutes = require("./routes/group")
+const sendmailRoutes = require("./routes/sendmail")
 
 const User = require("./models/user");
 const Chat = require("./models/chat");
@@ -20,6 +22,7 @@ app.use(cors());
 app.use("/user",userRoutes);
 app.use("/chats",chatRoutes);
 app.use("/group",groupRoutes);
+app.use(sendmailRoutes);
 
 User.hasMany(Chat)
 Chat.belongsTo(User)
@@ -43,3 +46,7 @@ sequelize
 .catch(err=>{
     console.log(err);
 })
+
+// app.listen(3000,()=>{
+//     console.log("server is running")
+// })

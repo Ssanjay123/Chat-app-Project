@@ -19,3 +19,12 @@ const Chat = sequelize.define("chats",{
 })
 
 module.exports = Chat;
+
+// const mongoose = require("mongoose");
+
+// const Chat = new mongoose.Schema({
+//     name :{type:String,default:null}, 
+//     message: {type:String,default:null},      
+// });
+
+// module.exports = new mongoose.model("chat",Chat);

@@ -16,3 +16,12 @@ const group = sequelize.define('group',{
 })
 
 module.exports = group;
+
+// const mongoose = require("mongoose");
+
+// const Group = new mongoose.Schema({
+//     groupname :{type:String,default:null}, 
+     
+// });
+
+// module.exports = new mongoose.model("group",Group);

@@ -6,7 +6,8 @@ const authenticate = (req,res,next)=>{
   const token = req.header("authorization");
   const user = jwt.verify(token,"Balaji")
   User.findByPk(user.userId).then(user=>{
-    req.user = user;
+  // User.findOne(user._id).then(user=>{
+    req.user = user; 
     next();
   })
 }
@@ -19,3 +20,4 @@ module.exports = {
     
     authenticate
 };
+

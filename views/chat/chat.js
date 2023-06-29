@@ -20,7 +20,10 @@ function showChatsOnScreen(data){
                     
 
 }
+0\-p+
+[*
 
+// function realTime(){
 
         window.addEventListener("DOMContentLoaded",async()=>{
             try{
@@ -28,22 +31,29 @@ function showChatsOnScreen(data){
        const response = await axios.get("http://localhost:3000/chats/getchats",{headers:{"authorization":token}})
        console.log(response)
        
-        for(let i=0;i<response.data.allMsgs.length;i++){
-        const name = response.data.allMsgs[i].name
-        const message = response.data.allMsgs[i].message
-        const id = response.data.allMsgs[i].id
-        localStorage.setItem(`${name}`,message)
-        const parentNode = document.getElementById('listOfChats')
-        const createNewMessage = `<div id="${id}"> ${name}: ${message}</div>`
-        parentNode.innerHTML += createNewMessage
+        // for(let i=0;i<response.data.allMsgs.length;i++){
+        // const name = response.data.allMsgs[i].name
+        // const message = response.data.allMsgs[i].message
+        // const id = response.data.allMsgs[i].id
+        
+        // const parentNode = document.getElementById('listOfChats')
+        // const createNewMessage = `<div id="${id}"> ${name}: ${message}</div>`
+        // parentNode.innerHTML += createNewMessage
+
+        response.data.allMsgs.forEach(msg => {
+          showChatsOnScreen(msg)
+        });
 
         // showChatsOnScreen(response.data.allMsgs[i])
        }
-    }
+    // }
     catch(err){
         console.log(err);
     }
       })
+    // }
+
+    // setInterval(realTime(),);
     
       function createGroup(e){
         window.location.href = "../Group/group.html"

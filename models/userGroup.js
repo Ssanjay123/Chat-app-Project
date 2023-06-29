@@ -12,3 +12,5 @@ const userGroup = sequelize.define('userGroup',{
 })
 
 module.exports = userGroup
+
+

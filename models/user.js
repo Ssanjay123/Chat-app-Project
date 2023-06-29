@@ -21,3 +21,15 @@ password:Sequelize.STRING
 });
 
 module.exports = User;
+
+
+
+// const mongoose = require("mongoose");
+
+// const User = new mongoose.Schema({
+//     name :{type:String,default:null}, 
+//     email: {type:String,default:null},      
+//     password: {type:String,default:null}      
+// });
+
+// module.exports = new mongoose.model("user",User);

@@ -5,7 +5,10 @@ const jwt = require("jsonwebtoken")
 exports.signUp = async(req,res)=>{
     try{
     const{name,email,password} = req.body;
+
  const user = await User.findAll({where:{email:email}})
+
+//  const user = await User.find({email:email})
   if(user[0]){
     res.status(200).json({message:"User Already Exists"})
   }
@@ -13,7 +16,10 @@ exports.signUp = async(req,res)=>{
     const saltRound = 10;
    bcrypt.hash(password,saltRound,async(err,hash)=>{
     // console.log(err);
+//     const user = new User({name:name,email:email,password:hash})
+//    await user.save();
     await User.create({name,email,password:hash});
+    console.log("created user")
     res.status(201).json({success:true,msg:"successfully created new user"});
  })
 }
@@ -33,6 +39,7 @@ exports.login = async(req,res)=>{
     const{email,password} = req.body;
      
    const user =  await User.findAll({where:{email}})
+//    const user =  await User.find({email:email})
     if(user.length>0){
     bcrypt.compare(password,user[0].password,(err,result)=>{
         if(!err){
