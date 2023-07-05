@@ -9,7 +9,7 @@
 //     password:form.get("password")
 // }
 
-// const response = await axios.post("http://localhost:3000/user/signup",signupobj)
+// const response = await axios.post("13.51.85.74:3000/user/signup",signupobj)
 // if(response.status===200){
 //     console.log(response);
 //     alert(response.data.message)
@@ -35,7 +35,7 @@ const signupobj = {
     password:form.get("password")
 }
 
-const response = await axios.post("http://localhost:3000/user/signup",signupobj)
+const response = await axios.post("13.51.85.74:3000/user/signup",signupobj)
 if(response.status===403){
     console.log(response);
     alert(response.message)

@@ -6,7 +6,7 @@ async function addChats(e){
     
     let token = localStorage.getItem("token");
 
- const response = await axios.post("http://localhost:3000/chats/addchats",obj,{headers:{"authorization":token}})
+ const response = await axios.post("13.51.85.74:3000/chats/addchats",obj,{headers:{"authorization":token}})
 console.log(response);
 // localStorage.setItem(`${response.data.newMsg.name}`,response.data.newMsg.message);
    showChatsOnScreen(response.data.newMsg)
@@ -28,7 +28,7 @@ function showChatsOnScreen(data){
         window.addEventListener("DOMContentLoaded",async()=>{
             try{
         const token = localStorage.getItem("token")
-       const response = await axios.get("http://localhost:3000/chats/getchats",{headers:{"authorization":token}})
+       const response = await axios.get("13.51.85.74:3000/chats/getchats",{headers:{"authorization":token}})
        console.log(response)
        
         // for(let i=0;i<response.data.allMsgs.length;i++){
