@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors")
@@ -37,6 +38,10 @@ Chat.belongsTo(Group)
 
 userGroup.belongsTo(User)
 userGroup.belongsTo(Group)
+
+app.use((req,res)=>{
+    res.sendFile(path.join(__dirname),`views/${req.url}`)
+})
 
 sequelize
 // .sync({force:false,alter:true})
