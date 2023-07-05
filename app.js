@@ -40,7 +40,7 @@ userGroup.belongsTo(User)
 userGroup.belongsTo(Group)
 
 app.use((req,res)=>{
-    res.sendFile(path.join(__dirname),`views/${req.url}`)
+    res.sendFile(path.join(__dirname,`views/${req.url}`))
 })
 
 sequelize
