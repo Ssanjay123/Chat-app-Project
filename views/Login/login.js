@@ -8,7 +8,7 @@ async function login(e){
         password:form.get("password")
      }
      console.log(loginobj);
-     const response = await axios.post("13.51.85.74:3000/user/login",loginobj)
+     const response = await axios.post("http://13.51.85.74:3000/user/login",loginobj)
      if(response.status===200){
      const token = response.data.token
      localStorage.setItem("token",token);

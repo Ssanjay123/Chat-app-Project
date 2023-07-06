@@ -8,7 +8,7 @@
 //     }
 //     console.log(createGroup);
 //     const token = localStorage.getItem('token');
-//     axios.post("13.51.85.74:3000/group/createGroup", createGroup , {headers:{"Authorization":token}})
+//     axios.post("http://13.51.85.74:3000/group/createGroup", createGroup , {headers:{"Authorization":token}})
 //     .then(result=>{
 //         console.log(result)      
 //     })
@@ -20,7 +20,7 @@
 
 // window.addEventListener('DOMContentLoaded',() =>{
 //     const token = localStorage.getItem('token')
-//     axios.get("13.51.85.74:3000/group/getgroupChat",{headers:{"Authorization":token}})
+//     axios.get("http://13.51.85.74:3000/group/getgroupChat",{headers:{"Authorization":token}})
 //     .then(result =>{
 //         console.log(result)
 //         console.log(result.data.data[0].group.GroupName)
@@ -58,7 +58,7 @@
 //     // e.preventDefault();
 //     const token = localStorage.getItem('token')
 //     const message = document.getElementById('inputId').value
-//     axios.post(`13.51.85.74:3000/group/postmessage/${groupid}`,{message:message},{headers:{"Authorization":token}})
+//     axios.post(`http://13.51.85.74:3000/group/postmessage/${groupid}`,{message:message},{headers:{"Authorization":token}})
 //     .then(result =>{
 //         const parentNode = document.getElementById('message')
 //         let createdGroup=""
@@ -78,7 +78,7 @@
 
 // function showMessages(groupid)
 // {
-//     axios.get(`13.51.85.74:3000/group/getmessage/${groupid}`)
+//     axios.get(`http://13.51.85.74:3000/group/getmessage/${groupid}`)
 //     .then(result =>{
 //         console.log(result)
 //         const parentNode = document.getElementById('message')
@@ -115,7 +115,7 @@
 //     e.preventDefault();
 //     let users = document.getElementById('showAddUser')
 //     const user1 = document.getElementById('userId').value
-//    const result = await axios.post(`13.51.85.74:3000/group/AddUser/${groupid}`,{user:user1})
+//    const result = await axios.post(`http://13.51.85.74:3000/group/AddUser/${groupid}`,{user:user1})
    
 //         console.log(result)
 //         let userarr = result.data.data;
@@ -133,7 +133,7 @@
 // async function showAddUser(groupid){
 //     try{
 //     let users = document.getElementById('showAddUser')
-//    let result = await axios.get(`13.51.85.74:3000/group/getUser/${groupid}`)
+//    let result = await axios.get(`http://13.51.85.74:3000/group/getUser/${groupid}`)
     
 //    let userarr = result.data.data;
    
@@ -152,7 +152,7 @@
 // async function removeUserFromGroup(userId,groupId){
 //     try{
         
-//    const result = await axios.delete(`13.51.85.74:3000/group/deleteUser?groupId=${groupId}&userId=${userId}`)
+//    const result = await axios.delete(`http://13.51.85.74:3000/group/deleteUser?groupId=${groupId}&userId=${userId}`)
 //    console.log(result);
 //    const parentNode = document.getElementById("showAddUser");
 //    const childToBeRemoved = document.getElementById(`${userId}`);
