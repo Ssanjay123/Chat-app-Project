@@ -27,6 +27,10 @@ app.use("/chats",chatRoutes);
 app.use("/group",groupRoutes);
 app.use(sendmailRoutes);
 
+app.use((req,res)=>{
+    res.sendFile(path.join(__dirname,`views/${req.url}`))
+})
+
 User.hasMany(Chat)
 Chat.belongsTo(User)
 
@@ -39,9 +43,6 @@ Chat.belongsTo(Group)
 userGroup.belongsTo(User)
 userGroup.belongsTo(Group)
 
-app.use((req,res)=>{
-    res.sendFile(path.join(__dirname,`views/${req.url}`))
-})
 
 sequelize
 // .sync({force:false,alter:true})
